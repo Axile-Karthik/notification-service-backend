@@ -1,0 +1,19 @@
+{
+  "userId": "jifjkfnn3442",
+  "userName": "karthik",
+  "notification": {
+    "type": "MESSAGE",
+    "eventType": {
+      "type": "EMAIL",
+      "mailBody": {
+        "to": "test@example.com",
+        "cc": "cc@example.com",
+        "bcc": "bcc@example.com",
+        "body": "This is a normal email message body."
+      }
+    },
+    "eventTypeRaw": "email",
+    "message": null
+  },
+  "event": null
+}

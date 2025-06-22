@@ -1,0 +1,14 @@
+{
+  "userId": "jifjkfnn3442",
+  "userName": "karthik",
+  "notification": {
+    "type": "MESSAGE",
+    "eventType": {
+      "type": "SMS",
+      "mailBody": null
+    },
+    "eventTypeRaw": "otp",
+    "message": null
+  },
+  "event": null
+}
