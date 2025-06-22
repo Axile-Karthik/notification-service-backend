@@ -1,6 +1,7 @@
 package com.notification.userservice.service.impl;
 
 import com.notification.userservice.dto.UserRequest;
+import com.notification.userservice.enums.NotificationTypeEnum;
 import com.notification.userservice.service.KafkaService;
 import com.notification.userservice.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -16,8 +17,20 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void kafkaProducer(UserRequest request) {
+        if (request == null) {
+            throw new IllegalArgumentException("User request cannot be null");
+        }
 
-            log.info("User Name : {}",request.userName());
-            kafkaService.kafkaProducer(request);
+        NotificationTypeEnum type = request.notification().eventType().type();
+        if (type == NotificationTypeEnum.EMAIL) {
+            kafkaService.kafkaProducerEmail(request);
+        } else if (type==NotificationTypeEnum.SMS) {
+            kafkaService.kafkaProducerSms(request);
+
+        } else {
+            throw new IllegalArgumentException("Unsupported notification type: " + type);
+        }
+
+        log.info("User Name : {}", request.userName());
     }
 }

@@ -1,5 +1,6 @@
 package com.notification.userservice.enums;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import lombok.Getter;
 
 @Getter
@@ -13,7 +14,7 @@ public enum NotificationTypeEnum {
         this.type = type;
     }
 
-
+    @JsonCreator
     public static NotificationTypeEnum getString(String input) {
         for (NotificationTypeEnum value : NotificationTypeEnum.values()) {
             if (value.type.equalsIgnoreCase(input)) {

@@ -16,8 +16,14 @@ public class KafkaServiceImpl implements KafkaService {
     private final KafkaTemplate<String, UserRequest> kafkaTemplate;
 
     @Override
-    public void kafkaProducer(UserRequest request) {
-        log.info("Sending message to Kafka: {}", request);
+    public void kafkaProducerEmail(UserRequest request) {
+        log.info("Sending message to Kafka topic : {}",  request.notification().eventType().type());
+        kafkaTemplate.send(AppConstants.EMAIL,request);
+    }
+
+    @Override
+    public void kafkaProducerSms(UserRequest request) {
+        log.info("Sending message to Kafka topic  : {}", request.notification().eventType().type());
         kafkaTemplate.send(AppConstants.SMS,request);
     }
 }

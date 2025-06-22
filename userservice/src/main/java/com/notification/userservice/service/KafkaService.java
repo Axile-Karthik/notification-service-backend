@@ -3,5 +3,6 @@ package com.notification.userservice.service;
 import com.notification.userservice.dto.UserRequest;
 
 public interface KafkaService {
-    void kafkaProducer(UserRequest request);
+    void kafkaProducerEmail(UserRequest request);
+    void kafkaProducerSms(UserRequest request);
 }
